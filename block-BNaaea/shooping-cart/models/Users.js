@@ -9,6 +9,7 @@ var user = new Schema(
     password: { type: String, minlength: 5, required: true },
     isAdmin: { type: Boolean, default: false, required: false },
     itemId: [{ type: Schema.Types.ObjectId, ref: "Items" }],
+    isBlock: {type:Boolean, default:false},
   },
   { timestamps: true }
 );

@@ -1,0 +1,25 @@
+<header>
+  <div class="container">
+    <a href="">shooping card</a>
+    <nav>
+      <ul>
+        <li><a href="">Home</a></li>
+        <%if(user || user.isAdmin) { %>
+        <li><a href="">List Of Product</a></li>
+        <li><a href=""><%= user.name %></a></li>
+        <li><a href="/users/logout">logout</a></li>
+        <% }else if(user.isAdmin) { %>
+        <li><a href="/items/new">add product</a></li>
+        <li>
+          <a href="/users/dashboard">Admin Dashboard</a>
+        </li>
+        <% }else{%>
+        <li><a href="">List Of Product</a></li>
+        <li><a href="">LogIn</a></li>
+        <li><a href="">SignUp</a></li>
+        <li><a href=""></a></li>
+        <%} %>
+      </ul>
+    </nav>
+  </div>
+</header>

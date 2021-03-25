@@ -1,4 +1,6 @@
-let Users = require('../models/Users')
+const Items = require('../models/Items')
+let Users = require('../models/Users');
+var Comments = require('../models/Comments')
 module.exports = {
     loggedInUser:(req, res, next)=> {
         if(req.session && req.session.userId) {
@@ -30,6 +32,17 @@ module.exports = {
         }else{
             res.redirect('/users/login');
         }
+    },
+    CommentInfo : (req, res, next)=> {
+        console.log(req.params.id);
+        Comments.findById(req.params.id, (err , content)=> {
+            if(err) next(err) 
+            if(content.userId.toString()=== req.user._id.toString()){
+                next()
+            }else{
+                res.redirect('/users/login')
+            }
+        })
     }
 }
 
