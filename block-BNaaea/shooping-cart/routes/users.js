@@ -46,11 +46,16 @@ router.post("/login", function (req, res, next) {
       req.flash("error", "User doesnt exist!! Please signup");
       return res.redirect("/users/login");
     }
+
     user.verifyPassword(password, (err, result) => {
       if (err) return next(err);
       if (!result) {
         req.flash("error", "password is incorrect");
         return res.redirect("/users/login");
+      }
+      if(user.isBlock) {
+        req.flash("error", "You are block")
+        return res.redirect('/users/login')
       }
       req.session.userId = user.id;
       if (user.isAdmin) {
@@ -62,12 +67,11 @@ router.post("/login", function (req, res, next) {
   });
 });
 
+
 router.get('/logout' , (req, res)=> {
   req.session.destroy();
   res.clearCookie();
   res.redirect('/users/login');
 })
-
-
 
 module.exports = router;

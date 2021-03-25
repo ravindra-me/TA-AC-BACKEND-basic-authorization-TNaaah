@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>shooping card</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <header>
+      <div class="container flex justify-between-flex align-center">
+        <a href="/" class="logo">shooping cart</a>
+        <nav>
+          <ul class="flex align-center">
+            <li><a href="/">Home</a></li>
+            <%if(user && user.isAdmin) { %>
+              <li><a href="/items">List Of Product</a></li>
+              <li><a href="/items/new">add product</a></li>
+              <li>
+                <a href="/users/dashboard">Dashboard</a>
+              </li>
+              <li><a href=""><%= user.name %></a></li>
+              <li><a href="/users/logout">logout</a></li>
+            <% }%>
+            <% if(user) { %>
+              <li><a href="/items">List Of Product</a></li>
+              <li><a href=""><%= user.name %></a></li>
+            <%}else{ %>
+            <li><a href="/items">List Of Product</a></li>
+             <li><a href="/users/signup">signup</a></li>
+             <li><a href="/users/login">login</a></li>
+            <%} %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <h1></h1>
+    <p>Welcome to expres</p>
   </body>
 </html>

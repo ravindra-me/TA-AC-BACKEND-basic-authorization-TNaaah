@@ -5,8 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body>
+    <header>
+      <div class="container flex justify-between-flex align-center">
+        <a href="/" class="logo">schooping cart</a>
+          <nav>
+            <ul class="flex align-center">
+              <li><a href="/">Home</a></li>
+              <li><a href="/items">List Of Product</a></li>
+              <%if(user && user.isAdmin) { %>
+                <li><a href="/items/new">add product</a></li>
+                <li>
+                  <a href="/users/dashboard">Dashboard</a>
+                </li>
+                <% }%>
+                <% if(user) { %>
+                  <li><a href=""><%= user.name %></a></li>
+                  <li><a href="/users/logout">logout</a></li>
+              <%}else{ %>
+              <li><a href="/items">List Of Product</a></li>
+               <li><a href="/users/signup">signup</a></li>
+               <li><a href="/users/login">login</a></li>
+              <%} %>
+            </ul>
+        </nav>
+      </div>
+    </header>
     <main>
       <section class="padding">
         <div class="container">
@@ -21,8 +47,9 @@
             </div>
             <form
               class="flex-40"
-              action="/items/additem"
+              action="/items/new"
               method="POST"
+              enctype="multipart/form-data"
               
             >
               <label for="name"> name of product </label>
@@ -34,7 +61,7 @@
                 required
                 class="form-control"
               />
-              <!-- <label for="productImage">Product Image</label>
+              <label for="productImage">Product Image</label>
               <input
                 type="file"
                 id="productImage"
@@ -42,7 +69,7 @@
                 placeholder="Chose one Image of product"
                 class="form-control"
                 required
-              /> -->
+              />
               <label for="quantity">quantity of product</label>
               <input
                 type="number"

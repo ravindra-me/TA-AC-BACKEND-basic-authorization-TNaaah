@@ -8,7 +8,8 @@ var item = new Schema(
     adminId: {type: Schema.Types.ObjectId , ref: 'Users'},
     likes: [{ type: Schema.Types.ObjectId, ref: "Users" }],
     catagories:{type:String , required:true},
-    // productImage: {type: String, required:true}
+    commentId: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
+    productImage: {type: String, required:true}
   },
   {
     timestamps: true,

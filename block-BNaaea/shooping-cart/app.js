@@ -9,6 +9,7 @@ var mongoose = require('mongoose')
 var Users = require('./models/Users');
 var Items = require('./models/Items');
 var Cart = require('./models/Cart');
+var Comments = require('./models/Comments');
 var auth = require('./middleaware/auth');
 
 var session = require('express-session');
@@ -20,6 +21,7 @@ require('dotenv').config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var itemsRouter = require('./routes/items');
+var commentRouter = require('./routes/comment');
 
 
 
@@ -66,6 +68,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // app.use('/admin' , adminRouter);
 app.use('/items' , itemsRouter);
+app.use('/comments', commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

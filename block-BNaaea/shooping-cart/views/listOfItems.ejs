@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <header>
+    <div class="container flex justify-between-flex align-center">
+      <a href="/" class="logo">shooping cart</a>
+      <nav>
+        <ul class="flex align-center">
+          <li><a href="/">Home</a></li>
+          <%if(user && user.isAdmin) { %>
+          <li><a href="/items">List Of Product</a></li>
+          <li><a href="/items/new">add product</a></li>
+          <li>
+            <a href="/items/dashboard">Dashboard</a>
+          </li>
+          <% }%> <% if(user) { %>
+
+          <li class="relative sub-li">
+            <a href=""> Hello <%= user.name %></a>
+            <ul class="absolute sub-nav">
+              <li><a href=""><%=user.email%></a></li>
+              <!-- <li><a href="">LogOut</a></li> -->
+              <li><a href="/users/logout">logout</a></li>
+            </ul>
+          </li>
+          <%}else{ %>
+          <li><a href="/items">List Of Product</a></li>
+          <li><a href="/users/signup">signup</a></li>
+          <li><a href="/users/login">login</a></li>
+          <%} %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+      <section class="padding listItem-hero">
+          <div class="container relative grid grid-template-col-4 gap">
+            <aside>
+              <h3 class="ternary-heading">Filter By Catagories</h3>
+                <ul>
+                    <% catagories.forEach(e=> { %>
+                        <li>
+                            <a href="/items/<%=e%>" ><%= e%></a>
+                        </li> 
+                    <%}) %>
+                </ul>
+            </aside>
+            <div class="grid grid-template-col-3 grid-span-3 gap">
+                <%if(data.length){ %>
+                <% data.forEach(element=> { %>
+                  <article class="item-card align-self">
+                    <div class="font-0">
+                      <img src="/images/products/<%=element.productImage%>" alt="" class="img">
+                    </div>
+                    <div class="item-detail">
+                      <h3 class="ternary-heading"><%= element.name %></h3>
+                      <h4><span>&#8377; </span> <%=element.price%></h4>
+                      <h4><span>Qty</span> <%=element.quantityOfProduct %></h4>
+                      <a href="/items/<%=element._id%>/detail" class="btn">detail</a>    
+                    </div>
+                  </article>
+                  <% })%>
+                  <% }else{ %>
+                  <h3 class="ternary-heading">No items available</h3>
+                  <% } %>
+              </div>
+          </div>
+            </div>
+      </section>
+      </main>
+</body>
+</html>
