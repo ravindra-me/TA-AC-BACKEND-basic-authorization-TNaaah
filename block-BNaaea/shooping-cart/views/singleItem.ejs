@@ -12,37 +12,7 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <header>
-      <div class="container flex justify-between-flex align-center">
-        <a href="/" class="logo">shooping cart</a>
-        <nav>
-          <ul class="flex align-center">
-            <li><a href="/">Home</a></li>
-            <%if(user && user.isAdmin) { %>
-            <li><a href="/items">List Of Product</a></li>
-            <li><a href="/items/new">add product</a></li>
-            <li>
-              <a href="/users/dashboard">Dashboard</a>
-            </li>
-            <% }%> <% if(user) { %>
-
-            <li class="relative sub-li">
-              <a href=""> Hello <%= user.name %></a>
-              <ul class="absolute sub-nav">
-                <li><a href=""><%=user.email%></a></li>
-                <!-- <li><a href="">LogOut</a></li> -->
-                <li><a href="/users/logout">logout</a></li>
-              </ul>
-            </li>
-            <%}else{ %>
-            <li><a href="/items">List Of Product</a></li>
-            <li><a href="/users/signup">signup</a></li>
-            <li><a href="/users/login">login</a></li>
-            <%} %>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <%- include("partials/header")%> 
     <main>
       <section class="padding details-hero">
         <article class="container grid grid-template-col-2 gap">
@@ -57,7 +27,7 @@
             </div>
             <div class="box">
               <h3 class="ternary-heading">Price Of Product</h3>
-              <p><%= data.price %>/product</p>
+              <p><span>&#8377; </span>  <%= data.price %>/product</p>
             </div>
             <div class="box">
               <h3 class="ternary-heading">Likes</h3>
@@ -74,7 +44,7 @@
             <% } %>
             <div>
               <% if(!user.isAdmin){ %>
-              <a href="/items/<%= data._id%>/cart">Add to Cart</a>
+              <a href="/items/<%= data._id%>/cart" class="btn">Add to Cart</a>
               <%}%>
             </div>
           </div>
