@@ -1,3 +1,10 @@
+.index-hero{
+    background: rgb(246,246,246);
+    h1{
+        margin-bottom: 1rem;
+    }
+}
+
 .listItem-hero{
     aside{
         background-color: rgb(42,41,62);
@@ -98,5 +105,26 @@
     .btn{
         padding: 0.6rem 1rem;
         font-size: 1rem;
+    }
+}
+
+
+.hero-cart{
+    .font-0{
+        img{
+            height: 350px;
+        }
+    }
+    .quntity{
+        font-size: 1.25rem;
+        margin-top: 0.5rem;
+        a{
+            padding: 0.5rem;
+            background-color: lightblue;
+            border-radius: 0.25rem;
+        }
+    }
+    .box{
+        margin-bottom: 1rem;
     }
 }

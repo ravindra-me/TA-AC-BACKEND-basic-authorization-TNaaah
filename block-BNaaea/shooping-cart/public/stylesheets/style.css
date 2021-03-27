@@ -235,6 +235,10 @@ a {
   opacity: 0.5;
 }
 
+.display-none {
+  display: none;
+}
+
 header {
   background-color: rgba(0, 0, 0, 0.8);
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
@@ -249,7 +253,7 @@ header nav li {
 header nav li a {
   color: white;
   font-weight: 600;
-  display: inline-block;
+  display: block;
   padding: 1.5rem;
   text-transform: capitalize;
 }
@@ -263,6 +267,16 @@ header .logo {
   font-weight: 800;
   color: white;
   text-shadow: 0 4px 5px rgba(165, 42, 42, 0.5);
+}
+
+header .cart {
+  color: white;
+  padding: 0;
+  font-size: 2rem;
+}
+
+header .cart:hover {
+  border: 0;
 }
 
 .primary-heading {
@@ -360,6 +374,14 @@ footer .copy-right small {
 
 .edit-comment-hero form .btn {
   margin-top: 0.5rem;
+}
+
+.index-hero {
+  background: #f6f6f6;
+}
+
+.index-hero h1 {
+  margin-bottom: 1rem;
 }
 
 .listItem-hero aside {
@@ -473,5 +495,24 @@ footer .copy-right small {
 .comment-card .btn {
   padding: 0.6rem 1rem;
   font-size: 1rem;
+}
+
+.hero-cart .font-0 img {
+  height: 350px;
+}
+
+.hero-cart .quntity {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.hero-cart .quntity a {
+  padding: 0.5rem;
+  background-color: lightblue;
+  border-radius: 0.25rem;
+}
+
+.hero-cart .box {
+  margin-bottom: 1rem;
 }
 /*# sourceMappingURL=style.css.map */

@@ -5,8 +5,8 @@ var cart = new Schema(
     userId: { type: Schema.Types.ObjectId, ref: "Users" },
     listItems: [
       {
-        itemId: { type: Schema.Types.ObjectId, ref: "Item" },
-        quantityProduct: { type: Number, default: 0 },
+        itemId: { type: Schema.Types.ObjectId, ref: "Items" },
+        quantityProduct: { type: Number, default: 1, max:10 , min:1},
       },
     ],
   },
@@ -14,5 +14,8 @@ var cart = new Schema(
     timestamps: true,
   }
 );
+
+
+
 
 module.exports = mongoose.model("Cart", cart);

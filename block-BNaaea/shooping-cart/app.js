@@ -22,7 +22,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var itemsRouter = require('./routes/items');
 var commentRouter = require('./routes/comment');
-
+var cartRouter = require('./routes/cart');
 
 
 mongoose.connect(
@@ -69,6 +69,7 @@ app.use('/users', usersRouter);
 // app.use('/admin' , adminRouter);
 app.use('/items' , itemsRouter);
 app.use('/comments', commentRouter);
+app.use('/cart' , cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -2,37 +2,35 @@
 <html>
   <head>
     <title>shooping card</title>
+    <script
+      src="https://kit.fontawesome.com/379acff5c7.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <header>
-      <div class="container flex justify-between-flex align-center">
-        <a href="/" class="logo">shooping cart</a>
-        <nav>
-          <ul class="flex align-center">
-            <li><a href="/">Home</a></li>
-            <%if(user && user.isAdmin) { %>
-              <li><a href="/items">List Of Product</a></li>
-              <li><a href="/items/new">add product</a></li>
-              <li>
-                <a href="/users/dashboard">Dashboard</a>
-              </li>
-              <li><a href=""><%= user.name %></a></li>
-              <li><a href="/users/logout">logout</a></li>
-            <% }%>
-            <% if(user) { %>
-              <li><a href="/items">List Of Product</a></li>
-              <li><a href=""><%= user.name %></a></li>
-            <%}else{ %>
-            <li><a href="/items">List Of Product</a></li>
-             <li><a href="/users/signup">signup</a></li>
-             <li><a href="/users/login">login</a></li>
-            <%} %>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <h1></h1>
-    <p>Welcome to expres</p>
+    <%- include("partials/header")%>
+    <main>
+      <section class="padding index-hero">
+        <article class="container flex justify-between-flex align-center">
+          <div class="hero-content flex-40">
+            <h1 class="primary-heading">Welcome to Shopping Cart</h1>
+            <p class="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim
+              voluptate ex possimus dicta sapiente magnam nobis mollitia
+              recusandae ullam natus veniam amet, doloribus laudantium
+              necessitatibus ipsum eveniet sunt nulla nisi.
+            </p>
+          </div>
+          <div class="font-0 flex-50">
+            <img
+              src="https://www.nicepng.com/png/detail/84-848148_grocery-shopping-cart-png-supermarket-shopping-cart-png.png"
+              alt=""
+              class="img"
+            />
+          </div>
+        </article>
+      </section>
+    </main>
   </body>
 </html>

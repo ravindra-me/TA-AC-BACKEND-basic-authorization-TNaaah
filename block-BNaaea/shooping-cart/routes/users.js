@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Users = require("../models/Users");
+var Cart = require('../models/Cart');
 /* GET users listing. */
 
 router.get("/signup", function (req, res, next) {
@@ -25,7 +26,15 @@ router.post("/signup", (req, res, next) => {
         return res.redirect("/users/signup");
       }
     }
-    res.redirect("/users/login");
+    console.log(user)
+    if(!user.isAdmin){
+      Cart.create({userId:user._id} , (err , cart)=> {
+        if(err) return next(err);
+        return res.redirect("/users/login");
+      })
+    }else{
+      return res.redirect("/users/login");
+    }
   });
 });
 
