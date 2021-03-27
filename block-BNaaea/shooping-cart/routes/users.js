@@ -63,7 +63,7 @@ router.post("/login", function (req, res, next) {
         return res.redirect("/users/login");
       }
       if(user.isBlock) {
-        req.flash("error", "You are block")
+        req.flash("error", "You are blocked")
         return res.redirect('/users/login')
       }
       req.session.userId = user.id;
