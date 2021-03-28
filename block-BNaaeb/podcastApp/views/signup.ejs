@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if (error) { %>
+     <p><%= error %> </p>
+    <% } %>
+    <form action="/users/signup" method="POST">
+        <label for="name">name</label>
+        <input type="text" name="name" placeholder="enter your name" required>
+        <label for="age">age</label>
+        <input type="number" name="age" id="age" required>
+        <label for="email">email</label>
+        <input type="email" placeholder="enter your email" name="email" required>
+        <label for="password">password</label>
+        <input type="password" name="password" placeholder="set password" required>
+        <label for="category">category for suscribe</label>
+        <select name="category" id="category">
+            <option value="free">free</option>
+            <option value="vip">vip</option>
+            <option value="preminm">premium</option>
+        </select>
+        <input type="checkbox" name="isAdmin" name="admin">
+        <label for="admin">admin</label>
+        <button type="submit">submit</button>
+    </form>
+</body>
+</html>
