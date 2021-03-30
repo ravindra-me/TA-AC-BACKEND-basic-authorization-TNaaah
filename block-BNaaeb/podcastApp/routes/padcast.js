@@ -171,4 +171,32 @@ router.get('/:elem/category', (req, res, next)=> {
 })
 
 
+router.get('/:id/delete', async (req, res, next)=> {
+    try {
+        await Media.findOneAndDelete(req.params.id)
+        res.redirect('/podcast/dashboard');
+    } catch(e) {
+        next(e)
+    }
+})
+
+router.get('/:id/edit', async(req, res, next)=> {
+    try{
+       let content =  await Media.findById(req.params.id);
+       res.render('editContent', {data:content});
+    } catch (err){
+        next(err)
+    }
+})
+
+router.post('/:id/edit', upload.single('file'), (req, res, next)=> {
+    if(req.file) {
+        req.body.file = req.file.filename;
+    }
+    Media.findByIdAndUpdate(req.params.id, req.body , {new:true}, (err, update)=> {
+        if(err) return next(err);
+        res.redirect('/podcast/dashboard');
+    })
+} )
+
 module.exports = router;

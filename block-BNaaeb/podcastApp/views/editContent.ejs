@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <%- include("partials/header")%>
+    <main>
+      <section class="padding login-hero">
+        <div class="container flex justify-between-flex align-center">
+          <div class="font-0 flex-40">
+            <img
+            src="https://www.sellersmile.com/wp-content/uploads/2020/01/podcast.svg"
+              alt=""
+              class="img"
+            />
+          </div>
+          <div class="flex-40">
+              <h2 class="secondary-heading">Edit Content</h2>
+            <form action="/podcast/<%= data._id%>/edit" method="POST" enctype="multipart/form-data">
+              <label for="title">title of vidio</label>
+              <input type="text" name="title" placeholder="enter title" class="form-control" value="<%= data.title %>"/>
+              <label for="file">select file</label>
+              <input type="file" name="file" placeholder="select file" class="form-control" id="file"/>
+              <label for="category">select category</label>
+              <select name="types" id="category" class="form-control" value = "<%= data.types %> ">
+                <option value="free">free</option>
+                <% if (user.isAdmin) { %>
+                <option value="vip">vip</option>
+                <option value="premium">premium</option>
+                <% } %>
+              </select>
+              <button type="submit" class="form-control">submit</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>
