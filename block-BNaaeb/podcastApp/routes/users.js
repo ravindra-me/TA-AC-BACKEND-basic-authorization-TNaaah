@@ -43,21 +43,22 @@ router.post("/login", function (req, res, next) {
   }
   Users.findOne({ email }, (err, user) => {
     if (err) return next(err);
+    if(user.isBlock) {
+      req.flash("error", "You are blocked")
+      return res.redirect('/users/login')
+    }
     if (!user) {
       req.flash("error", "User doesnt exist!! Please signup");
       return res.redirect("/users/login");
     }
-
+    
     user.verifyPassword(password, (err, result) => {
       if (err) return next(err);
       if (!result) {
         req.flash("error", "password is incorrect");
         return res.redirect("/users/login");
       }
-      if(user.isBlock) {
-        req.flash("error", "You are blocked")
-        return res.redirect('/users/login')
-      }
+     
       req.session.userId = user.id;
       res.redirect('/');
     });

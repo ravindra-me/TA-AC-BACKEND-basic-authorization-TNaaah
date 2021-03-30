@@ -9,19 +9,17 @@ const User = require('../models/User');
 router.use(auth.userInfo);
 
 router.get('/', (req,res, next)=> {
-    console.log("hi")
     let {category, userId} = req.user;
-
     if(req.user.isAdmin){
         Media.find({} , (err , podcast)=> {
             if(err) return next(err);
+            console.log("admin");
             Media.distinct('types' , (err, categoryes)=>{
                 if(err) return next(err);
                return res.render('podcastList' , {categoryes , podcast})
             })
         })
-    } 
-    if(category === 'free') {
+    }else if(category === 'free') {
         Media.find({types : category} , (err , podcast)=> {
             if(err) return next(err);
             Media.distinct('types' , (err, categoryes)=>{
@@ -38,7 +36,7 @@ router.get('/', (req,res, next)=> {
                return res.render('podcastList' , {categoryes , podcast})
             })
         })
-    }else{
+    }else if(category === "premium"){
         Media.find({} , (err , podcast)=> {
             if(err) return next(err);
             Media.distinct('types' , (err, categoryes)=>{
@@ -86,6 +84,89 @@ router.get('/dashboard', (req, res, next)=> {
                 return res.render('dashboard' , {categoryes , podcast, users})
             })
         })
+    })
+})
+
+router.get('/usermedia', (req, res, next)=>{
+    userMedia.find({}, (err, podcast)=> {
+        if(err) return next(err);
+        Media.distinct('types' , (err, categoryes)=>{
+            if(err) return next(err);
+            console.log(categoryes);
+            User.find({isAdmin:false}, (err , users)=> {
+                if(err) return next(err);
+                return res.render('userMedia' , {categoryes , podcast, users})
+            })
+        })
+    })
+})
+
+router.get('/:id/accept', (req, res, next)=> {
+    userMedia.findById(req.params.id, (err, podcast)=> {
+        if(err) return next(err)
+        if(!podcast.isAccept) {
+            let obj = {};
+            obj.title = podcast.title;
+            obj.types = podcast.types;
+            obj.file = podcast.file;
+            obj.userId = podcast.userId
+            Media.create(obj, (err , content)=> {
+                if(err) return next(err);
+                podcast.isAccept = true;
+                podcast.save((err, updatePoscast)=> {
+                    if(err) return next(err);
+                  return  res.redirect('/podcast/usermedia')
+                })
+            })
+        }else{
+            podcast.isAccept = true;
+            podcast.save((err, updatePoscast)=> {
+                if(err) return next(err);
+              return  res.redirect('/podcast/usermedia')
+            })
+        }
+    })
+})
+
+
+router.get('/:id/reject', (req, res, next)=> {
+    userMedia.findByIdAndDelete(req.params.id, (err, podcast)=> {
+        if(err) return next(err);
+        res.redirect('/podcast/userMedia');
+    })
+})
+
+router.get("/:id/userblock", (req, res, next) => {
+    User.findById(req.params.id, (err, content) => {
+      if (err) return next(err);
+      if (content.isBlock) {
+        content.isBlock = false;
+        content.save((err, update) => {
+          if (err) return next(err);
+          res.redirect("/podcast/dashboard");
+        });
+      } else {
+        content.isBlock = true;
+        content.save((err, update) => {
+          if (err) return next(err);
+          res.redirect("/podcast/dashboard");
+        });
+      }
+    });
+  });
+
+router.get('/:elem/category', (req, res, next)=> {
+    Media.find({types: req.params.elem}, (err, podcast)=> {
+        if(err) return next(err);
+        Media.distinct('types' , (err, categoryes)=>{
+            if(err) return next(err);
+            console.log(categoryes);
+            User.find({isAdmin:false}, (err , users)=> {
+                if(err) return next(err);
+                return res.render('dashboard' , {categoryes , podcast, users})
+            })
+        })
+        
     })
 })
 

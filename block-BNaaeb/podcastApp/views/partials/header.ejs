@@ -6,9 +6,12 @@
           <li><a href="/">Home</a></li>
           <li><a href="/podcast">List Of vidios</a></li>
           <%if(user && user.isAdmin) { %>
-          <li><a href="/padcast/new">add vidios</a></li>
+          <li><a href="/podcast/new">add vidios</a></li>
           <li>
             <a href="/podcast/dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="/podcast/userMedia" class="block">User Media</a>
           </li>
           <% }%> <% if(user) { %>
           <li class="relative sub-li">

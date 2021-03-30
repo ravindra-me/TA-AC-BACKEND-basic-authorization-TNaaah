@@ -82,6 +82,11 @@ body {
           justify-content: space-between;
 }
 
+.justify-around-flex {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .align-center {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -217,6 +222,7 @@ a {
   left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
+  z-index: 10000;
   background-color: rgba(0, 0, 0, 0.8);
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
           box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
@@ -510,11 +516,6 @@ footer .copy-right small {
 
 .hero-cart .box {
   margin-bottom: 1rem;
-}
-
-.dashboard-hero article {
-  height: 100%;
-  background: rgba(42, 41, 62, 0.5);
 }
 
 .dashboard-hero video {

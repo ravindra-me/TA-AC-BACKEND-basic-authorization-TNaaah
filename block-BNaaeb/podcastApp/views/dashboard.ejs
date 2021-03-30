@@ -17,7 +17,7 @@
                       <%users.forEach(elem=> { %>
                         <div class="user-box">
                             <h4 class="user-name <%= elem.isBlock ? "line-through" :"" %>"><%=elem.name%></h4>
-                            <a href="/items/<%= elem._id%>/user" class="block">Block this user</a>
+                            <a href="/podcast/<%= elem._id%>/userblock" class="block">Block this user</a>
                         </div>
                       <% }) %>
                   </aside>
@@ -30,7 +30,6 @@
                                     <source src="/videos/<%= element.file %>" type="video/mkv">
                                     <source src="/videos/<%= element.file %>" type="video/webm">   
                                 </video>
-                                <a href="/podcast/<%= element._id %> ">Delete</a>
                           </article>
                       <% }) %>
                   </div>
@@ -41,6 +40,7 @@
                             <a href="/podcast/<%= elem %>/category"><%= elem %> </a>
                         </div>
                     <% }) %>
+                    <div><a href="/podcast/dashboard">All</a></div>
                 </aside>
               </div>
           </section>

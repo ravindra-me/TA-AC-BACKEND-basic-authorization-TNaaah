@@ -5,6 +5,7 @@ var userMedia = new Schema({
     types:{type:String, default:'free' , enum:['free', 'vip', 'premium']},
     userId: {type:Schema.Types.ObjectId , ref:'User'}, 
     file:{type:String , required:true},
+    isAccept:{type:Boolean , default:false}
 })
 
 module.exports = mongoose.model('UserMedia' , userMedia);
