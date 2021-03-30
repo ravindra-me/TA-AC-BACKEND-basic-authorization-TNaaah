@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <%- include("partials/header")%> 
+      <main>
+          <section class="padding listItem-hero dashboard-hero">
+              <div class="container grid grid-template-col-4 gap">
+                  <aside>
+                      <h3 class="ternary-heading">List Of Users</h3>
+                      <%users.forEach(elem=> { %>
+                        <div class="user-box">
+                            <h4 class="user-name <%= elem.isBlock ? "line-through" :"" %>"><%=elem.name%></h4>
+                            <a href="/podcast/<%= elem._id%>/userblock" class="block">Block this user</a>
+                        </div>
+                      <% }) %>
+                  </aside>
+                  <div class="grid grid-template-col-2 grid-span-2 gap">
+                      <% podcast.forEach(element => { %>
+                        <article class="item-card align-self relative font-0">
+                                <video  controls>
+                                    <source src="/videos/<%= element.file %>" type="video/mp4">
+                                    <source src="/videos/<%= element.file %>" type="video/mov">
+                                    <source src="/videos/<%= element.file %>" type="video/mkv">
+                                    <source src="/videos/<%= element.file %>" type="video/webm">   
+                                </video>
+                          </article>
+                      <% }) %>
+                  </div>
+                  <aside>
+                    <h3 class="ternary-heading">List Of Category</h3>
+                    <%categoryes.forEach(elem=> { %>
+                        <div>
+                            <a href="/podcast/<%= elem %>/category"><%= elem %> </a>
+                        </div>
+                    <% }) %>
+                    <div><a href="/podcast/dashboard">All</a></div>
+                </aside>
+              </div>
+          </section>
+      </main>
+      <script src="/javascripts/index.js"></script>
+</body>
+</html>
