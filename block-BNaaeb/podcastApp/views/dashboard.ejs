@@ -23,14 +23,22 @@
                   </aside>
                   <div class="grid grid-template-col-2 grid-span-2 gap">
                       <% podcast.forEach(element => { %>
-                        <article class="item-card align-self relative font-0">
-                                <video  controls>
-                                    <source src="/videos/<%= element.file %>" type="video/mp4">
-                                    <source src="/videos/<%= element.file %>" type="video/mov">
-                                    <source src="/videos/<%= element.file %>" type="video/mkv">
-                                    <source src="/videos/<%= element.file %>" type="video/webm">   
-                                </video>
-                          </article>
+                        <article class="item-card align-self">
+                            <video  controls>
+                                <source src="/videos/<%= element.file %>" type="video/mp4">
+                                <source src="/videos/<%= element.file %>" type="video/mov">
+                                <source src="/videos/<%= element.file %>" type="video/mkv">
+                                <source src="/videos/<%= element.file %>" type="video/webm">   
+                            </video>
+                            <div class="flex justify-around-flex align-center">
+                                <div>
+                                    <a href="/podcast/<%= element._id %>/edit">edit</a>
+                                </div>
+                                <div>
+                                    <a href="/podcast/<%= element._id %>/delete">delete</a>
+                                </div>
+                            </div>
+                      </article>
                       <% }) %>
                   </div>
                   <aside>
