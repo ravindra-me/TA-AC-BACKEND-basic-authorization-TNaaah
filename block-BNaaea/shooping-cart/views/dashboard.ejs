@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <%- include("partials/header")%> 
+      <main>
+          <section class="padding dashboard-hero listItem-hero">
+              <div class="container grid grid-template-col-4 gap">
+                  <aside>
+                      <h3 class="ternary-heading">List Of Users</h3>
+                      <%users.forEach(elem=> { %>
+                        <div class="user-box">
+                            <h4 class="user-name <%= elem.isBlock ? "line-through" :"" %>"><%=elem.name%></h4>
+                            <a href="/items/<%= elem._id%>/user" class="block">Block this user</a>
+                        </div>
+                      <% }) %>
+                  </aside>
+                  <div class="grid grid-template-col-3 grid-span-3 gap">
+                      <% items.forEach(element => { %>
+                        <article class="item-card align-self">
+                            <div class="font-0">
+                              <img src="/images/products/<%=element.productImage%>" alt="" class="img">
+                            </div>
+                            <div class="item-detail">
+                              <h3 class="ternary-heading"><%= element.name %></h3>
+                              <h4><span>&#8377; </span> <%=element.price%></h4>
+                              <h4><span>Qty</span> <%=element.quantityOfProduct %></h4>
+                              <a href="/items/<%=element._id%>/detail" class="btn">detail</a>    
+                            </div>
+                          </article>
+                      <% }) %>
+                  </div>
+              </div>
+          </section>
+      </main>
+      <script src="/javascripts/index.js"></script>
+</body>
+</html>

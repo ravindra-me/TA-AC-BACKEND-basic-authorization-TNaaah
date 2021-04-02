@@ -1,0 +1,142 @@
+.index-hero{
+    background: rgb(246,246,246);
+    h1{
+        margin-bottom: 1rem;
+    }
+}
+
+.listItem-hero{
+    aside{
+        background-color: rgb(42,41,62);
+        padding: 1rem;
+        border-radius: 0.25rem;
+        color: whitesmoke;
+        height: 80vh;
+        position: sticky;
+        top: 10%;
+        h3{
+            border-bottom: 0.125rem solid white;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        h4, a{
+            color: white;
+            font-weight: 600;
+            margin: 0.125rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .block{
+            background-color: whitesmoke;
+            color: rgb(42,41,62);
+            display: inline-block;
+            margin: 0.25rem 0;
+            padding:0.25rem;
+            border-radius: 0.25rem;
+        }
+        .user-box{
+            border-bottom: 1px solid whitesmoke;
+            padding-bottom: 0.25rem;
+        }
+    }
+    .item-card{
+        box-shadow: 5px 5px 10px rgba($color: #000000, $alpha: 0.5);
+        border-radius: 0.25rem;
+        img{
+            width: 100%;
+            height: 200px;
+        }
+        .item-detail{
+            padding: 1rem;
+            h4{
+                margin-top: 0.5rem;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+.comment-sec{
+    h2{
+        margin-bottom: 2rem;
+    }
+    .btn{
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+    }
+}
+
+.details-hero {
+    .detail-content{
+        h2{
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 1.8rem;
+        }
+        .box{
+            margin-bottom: 0.5rem;
+            h3{
+                margin-bottom: 0.5rem;
+            }
+        }
+        .like{
+            font-size: 1.5rem;
+        }
+        .like-number{
+            font-size: 1.25rem;
+            margin-left: 1rem;
+        }
+    }
+}
+
+.comment-card{
+    background-color: lightblue;
+    padding: 1rem 3rem;
+    border-top-left-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+    margin-bottom: 1rem;
+    h2{
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+    .like{
+        font-size: 1.25rem;
+    }
+    .btn{
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+
+.hero-cart{
+    .font-0{
+        img{
+            height: 350px;
+        }
+    }
+    .quntity{
+        font-size: 1.25rem;
+        margin-top: 0.5rem;
+        a{
+            padding: 0.5rem;
+            background-color: lightblue;
+            border-radius: 0.25rem;
+        }
+    }
+    .box{
+        margin-bottom: 1rem;
+    }
+}
+
+.sign-in{
+    margin-bottom: 0.5rem;
+}
+
+button{
+    margin-top: 1rem;
+}
+
+.checkbox-lable{
+    margin-left: 0.5rem;
+}

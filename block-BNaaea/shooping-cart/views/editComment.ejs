@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+    src="https://kit.fontawesome.com/379acff5c7.js"
+    crossorigin="anonymous"
+  ></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="container flex justify-between-flex align-center">
+        <a href="/" class="logo">shooping cart</a>
+        <nav>
+          <ul class="flex align-center">
+            <li><a href="/">Home</a></li>
+            <%if(user && user.isAdmin) { %>
+            <li><a href="/items">List Of Product</a></li>
+            <li><a href="/items/new">add product</a></li>
+            <li>
+              <a href="/users/dashboard">Dashboard</a>
+            </li>
+            <% }%> <% if(user) { %>
+
+            <li class="relative sub-li">
+              <a href=""> Hello <%= user.name %></a>
+              <ul class="absolute sub-nav">
+                <li><a href=""><%=user.email%></a></li>
+                <!-- <li><a href="">LogOut</a></li> -->
+                <li><a href="/users/logout">logout</a></li>
+              </ul>
+            </li>
+            <%}else{ %>
+            <li><a href="/items">List Of Product</a></li>
+            <li><a href="/users/signup">signup</a></li>
+            <li><a href="/users/login">login</a></li>
+            <%} %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="padding edit-comment-hero">
+        <div class="container flex justify-between-flex align-center">
+          <div class="font-0 flex-50">
+            <img src="https://quuu.co/blog/wp-content/uploads/2019/08/Instagram-hashtags-caption-or-first-comment.svg" class="img" alt="">
+          </div>
+          <div class="flex-40">
+            <h1 class="secondary-heading">Edit Comment</h1>
+            <form action="/comments/<%= data._id%>/commentedit" method="POST">
+              <input
+                type="text"
+                placeholder="enter author"
+                name="name"
+                value="<%= data.name %>"
+                class="form-control"
+              />
+              <input
+                type="text"
+                name="title"
+                placeholder="enter comemnt"
+                value="<%= data.title %>"
+                class="form-control"
+              />
+              <button type="submit" class="btn">add comment</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

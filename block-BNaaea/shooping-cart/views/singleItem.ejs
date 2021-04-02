@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/379acff5c7.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include("partials/header")%> 
+    <main>
+      <section class="padding details-hero">
+        <article class="container grid grid-template-col-2 gap">
+          <div class="font-0">
+            <img src="/images/products/<%= data.productImage%>" alt="" class="img">
+          </div>
+          <div class="detail-content">
+            <h2 class="secondary-heading"><%= data.name %></h2>
+            <div class="box">
+              <h3 class="ternary-heading">Quantity Of Product</h3>
+              <p><%= data.quantityOfProduct %></p>
+            </div>
+            <div class="box">
+              <h3 class="ternary-heading">Price Of Product</h3>
+              <p><span>&#8377; </span>  <%= data.price %>/product</p>
+            </div>
+            <div class="box">
+              <h3 class="ternary-heading">Likes</h3>
+              <div class="flex align-center">
+                <a href="/items/<%= data._id %>/likes" class="like"
+                  ><i class="far fa-thumbs-up"></i
+                    ></a>
+                    <p class="like-number"><%= data.likes.length %></p>
+              </div>
+            </div class="box">
+            <% if(user.isAdmin) { %>
+            <a class="btn" href="/items/<%=data._id%>/edit">edit</a>
+            <a class="btn" href="/items/<%= data._id%>/delete">delete</a>
+            <% } %>
+            <div>
+              <% if(!user.isAdmin){ %>
+              <a href="/items/<%= data._id%>/cart" class="btn">Add to Cart</a>
+              <%}%>
+            </div>
+          </div>
+        </article>
+      </section>
+      <section class="padding comment-sec">
+        <div class="container">
+          <h2 class="secondary-heading">Comments</h2>
+          <div>
+            <% data.commentId.forEach(elem => { %>
+              <div class="comment-card flex justify-between-flex align-center">
+                <div class="">
+                  <h2><%= elem.name %></h2>
+                  <p><%= elem.title %></p>
+                  <div class="flex align-center">
+                    <a class="like" href="/comments/<%= elem._id%>/commentlike"><i class="far fa-thumbs-up"></i></a>
+                    <p class="like"><%= elem.likes.length%></p>
+                  </div>
+                </div>
+              <div>
+                <a class="btn" href="/comments/<%= elem._id%>/commentedit">edit</a>
+                <a class="btn" href="/comments/<%= elem._id%>/commentdelete">delete</a>
+              </div>
+            </div>
+            <%}) %>
+          </div>
+          <div class="grid grid-template-col-2 gap">
+            <form action="/items/<%= data._id%>/comment" method="POST">
+              <input type="text" placeholder="user name" name="name" class="form-control" />
+              <input type="text" name="title" placeholder="enter comemnt" class="form-control"/>
+              <button type="submit" class="btn">add comment</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

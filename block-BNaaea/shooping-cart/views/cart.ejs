@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+    src="https://kit.fontawesome.com/379acff5c7.js"
+    crossorigin="anonymous"
+  ></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include("partials/header")%>
+    <main>
+      <section class="padding hero-cart">
+        <div class="container grid grid-template-col-2 gap">
+          <% if (data.listItems.length) { %> 
+            <% data.listItems.forEach(element => { %>
+          <div >
+            <div class="font-0 box">
+              <img
+                src="/images/products/<%=  element.itemId.productImage %> "
+                class="img"
+                alt=""
+              />
+            </div>
+            <div class="box">
+                <h3 class="ternary-heading">Set Product Quntity</h3>
+                <% if (error) { %>
+                 <p> <%= error %>  </p>
+                <% } %>
+              <p class="quntity">
+                  <a href="/cart/<%= element._id %>/dec" class="<%= element.quantityProduct > 0 ? "" : "display-none" %> ">-</a>
+                  <%= element.quantityProduct %>
+                  <a href="/cart/<%= element._id %>/inc">+</a>
+              </p>
+            </div>
+            <div class="box">
+              <h3 class="ternary-heading">Total Price Of This Product</h3>
+              <p>
+                <span>&#8377; </span> <%= element.itemId.price *
+                element.quantityProduct %>
+              </p>
+            </div>
+            <div class="box">
+              <a href="" class="btn">Buy Now</a>
+              <a href="/items/<%= element.itemId._id%>/detail" class="btn">detail</a>
+              <a href="/cart/<%= element._id%>/remove" class="btn">Remove To Cart</a>
+            </div>
+          </div>
+          <% }) %>
+        <% }else { %>
+            <h2 class="secondary-heading text-center">No Item In Cart</h2>
+          <% } %>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
