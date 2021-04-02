@@ -86,6 +86,12 @@ body {
           justify-content: space-between;
 }
 
+.justify-center-flex {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .align-center {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -514,5 +520,17 @@ footer .copy-right small {
 
 .hero-cart .box {
   margin-bottom: 1rem;
+}
+
+.sign-in {
+  margin-bottom: 0.5rem;
+}
+
+button {
+  margin-top: 1rem;
+}
+
+.checkbox-lable {
+  margin-left: 0.5rem;
 }
 /*# sourceMappingURL=style.css.map */
