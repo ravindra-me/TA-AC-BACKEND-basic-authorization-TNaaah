@@ -8,35 +8,11 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body>
-    <header>
-      <div class="container flex justify-between-flex align-center">
-        <a href="/" class="logo">schooping cart</a>
-          <nav>
-            <ul class="flex align-center">
-              <li><a href="/">Home</a></li>
-              <li><a href="/items">List Of Product</a></li>
-              <%if(user && user.isAdmin) { %>
-                <li><a href="/items/new">add product</a></li>
-                <li>
-                  <a href="/users/dashboard">Dashboard</a>
-                </li>
-                <% }%>
-                <% if(user) { %>
-                  <li><a href=""><%= user.name %></a></li>
-                  <li><a href="/users/logout">logout</a></li>
-              <%}else{ %>
-              <li><a href="/items">List Of Product</a></li>
-               <li><a href="/users/signup">signup</a></li>
-               <li><a href="/users/login">login</a></li>
-              <%} %>
-            </ul>
-        </nav>
-      </div>
-    </header>
+    <%- include("partials/header")%>
     <main>
       <section class="padding">
         <div class="container">
-          <h2 class="secondary-heading text-center padding">add Item</h2>
+          <h2 class="secondary-heading text-center padding">Add Item</h2>
           <div class="flex justify-between-flex align-center">
             <div class="font-0 flex-40">
               <img
